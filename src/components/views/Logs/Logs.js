@@ -1,45 +1,50 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Log from '../Log/Log';
 import Loader from '../../common/Loader/Loader';
 
 class Logs extends Component {
-  state = {
-    logs: [],
-    loading: false,
+  static propTypes = {
+    logs: PropTypes.any,
+    fetchLogs: PropTypes.func,
+    loading: PropTypes.func,
   };
 
   componentDidMount() {
-    this.fetchLogs();
+    const { fetchLogs } = this.props;
+    fetchLogs();
   }
 
-  fetchLogs() {
-    this.setState({ loading: true });
-    fetch('http://localhost:5000/logs')
-      .then(res => res.json())
-      .then(data => this.setState({ logs: data }));
-
-    this.setState({ loading: false });
-  }
   render() {
-    const { logs, loading } = this.state;
-    return (
-      <section>
-        <ul className='collection with-header'>
-          <li className='collection-header'>
-            <h4>Logs List</h4>
-          </li>
-          {!loading && logs.length === 0 ? (
-            <p className='center'>
-              <Loader />
-              No logs
-            </p>
-          ) : (
-            logs.map(log => <Log key={log.id} logData={log} />)
-          )}
-        </ul>
-      </section>
-    );
+    const {
+      logs: { logs, loading },
+    } = this.props;
+    console.log('props', this.props);
+    if (loading || logs === []) {
+      return <Loader />;
+    } else {
+      return (
+        <section>
+          <ul className='collection with-header'>
+            <li className='collection-header'>
+              <h4>Logs List</h4>
+            </li>
+            {logs.map(log => (
+              <Log key={log.id} logData={log} />
+            ))}
+            {/* {!loading && logs.length === 0 ? (
+              <p className='center'>
+                <Loader />
+                No logs
+              </p>
+            ) : (
+              logs.map(log => <Log key={log.id} logData={log} />)
+            )} */}
+          </ul>
+        </section>
+      );
+    }
   }
 }
 

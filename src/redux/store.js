@@ -1,11 +1,15 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import logReducer from './LogReducer';
+
 // initial state
 const initialState = {};
 
 // define reducers
-const reducers = {};
+const reducers = {
+  logs: logReducer,
+};
 
 // add blank reducers for initial state properties without reducers
 Object.keys(initialState).forEach(item => {

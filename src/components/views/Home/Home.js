@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logs from '../Logs/Logs';
+import Logs from '../Logs/LogsContainer';
 import ButtonAdd from '../../common/Buttons/ButtonAdd';
 import AddLog from '../../common/Modals/AddLog';
 import EditLogModa from '../../common/Modals/EditLogModa';
