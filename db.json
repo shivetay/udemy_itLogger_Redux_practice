@@ -27,6 +27,27 @@
       "attention": false,
       "tech": "Sara Wilson",
       "date": "2019-05-31 19:57:35"
+    },
+    {
+      "message": "jaja sobie robicie",
+      "attention": false,
+      "tech": "Mieszko Dawidowicz",
+      "date": "2020-04-06T17:31:50.766Z",
+      "id": 8
+    },
+    {
+      "message": "witam. Kiedy można spodziewać się doręczenia paczki 0000177428120U",
+      "attention": true,
+      "tech": "Mieszko Dawidowicz",
+      "date": "2020-04-06T17:33:16.879Z",
+      "id": 9
+    },
+    {
+      "message": "nikt nie kontakwoał się ze mną",
+      "attention": false,
+      "tech": "Mieszko Dawidowicz",
+      "date": "2020-04-06T19:12:36.172Z",
+      "id": 11
     }
   ],
   "techs": [

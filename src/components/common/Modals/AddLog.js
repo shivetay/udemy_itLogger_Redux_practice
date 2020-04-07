@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 class AddLog extends Component {
+  static propTypes = {
+    logs: PropTypes.any,
+    addLogs: PropTypes.func,
+    loading: PropTypes.func,
+  };
+
   state = {
     message: '',
     attention: false,
@@ -11,13 +19,22 @@ class AddLog extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
+    const { addLogs } = this.props;
     const { message, tech, attention } = this.state;
 
     const onSubmit = () => {
       if (message === '' || tech === '') {
         M.toast({ html: 'Please enetr a message and tech.' });
       } else {
-        console.log(tech, message, attention);
+        const newLog = {
+          message,
+          attention,
+          tech,
+          date: new Date(),
+        };
+        console.log('newlog', newLog);
+
+        addLogs(newLog);
 
         this.setState({ message: '' });
         this.setState({ tech: '' });

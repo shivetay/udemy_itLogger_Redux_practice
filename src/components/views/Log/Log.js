@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Log = ({ logData }) => {
+const Log = ({ logData, delLog }) => {
+  const onDelete = id => {
+    delLog(id);
+  };
   return (
     <li className='collection-item'>
       <div>
@@ -16,7 +19,7 @@ const Log = ({ logData }) => {
           <span className='black-text'>ID# {logData.id}</span> last updated by{' '}
           <span className='black-text'>{logData.tech}</span> <span>{logData.date}</span>
         </span>
-        <a href='#' className='secondary-content'>
+        <a href='#' className='secondary-content' onClick={e => onDelete(logData.id)}>
           <i className='material-icons grey-text'>delete</i>
         </a>
       </div>
@@ -26,6 +29,7 @@ const Log = ({ logData }) => {
 
 Log.propTypes = {
   logData: PropTypes.object.isRequired,
+  delLog: PropTypes.func,
 };
 
 export default Log;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Log from '../Log/Log';
+import Log from '../Log/LogContainer';
 import Loader from '../../common/Loader/Loader';
 
 class Logs extends Component {
@@ -20,7 +20,6 @@ class Logs extends Component {
     const {
       logs: { logs, loading },
     } = this.props;
-    console.log('props', this.props);
     if (loading || logs === []) {
       return <Loader />;
     } else {
